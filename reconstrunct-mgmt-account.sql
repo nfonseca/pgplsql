@@ -3,6 +3,8 @@ CREATE OR REPLACE FUNCTION public.changeme()
  LANGUAGE plpgsql
 AS $function$
 
+<<block>>
+
 DECLARE
 
 	total_esx int := 3;
@@ -12,10 +14,14 @@ DECLARE
 
 BEGIN
 
---FOR esx  IN 1..3 LOOP
+--	FOR esx  IN 1 .. 1 LOOP
 
 
-	INSERT INTO MANAGEMENT_ACCOUNT  SELECT * FROM public.management_account_bck;
+--		INSERT INTO MANAGEMENT_ACCOUNT  SELECT * FROM public.management_account_bck;
+		INSERT INTO MANAGEMENT_ACCOUNT (id,component,component_id,host,username,password,status ) VALUES (1,'ESXi',NULL,'hostname',block.username,'password','status');
+
+--	END LOOP;
+
 
 
 END;
@@ -30,4 +36,5 @@ select public.changeme();
 
 
 
+--truncate MANAGEMENT_ACCOUNT;
 
