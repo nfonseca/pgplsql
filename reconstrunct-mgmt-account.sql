@@ -7,10 +7,13 @@ AS $function$
 
 DECLARE
 
-	total_esx int := 300;
+	total_esx int := 3000;
 	username varchar  := 'management';
 	password varchar := 'ac11b0c9bd5e82ff7eba633845eaf9865fdf1b7b9cafd013';
 	status varchar :='OK';
+	isESX  varchar :='ESXi';
+	hostPrefix  varchar :='cia-esx';
+	hostSufix varchar :='.vsphere.local';
 
 BEGIN
 
@@ -18,7 +21,8 @@ BEGIN
 
 
 
-		INSERT INTO MANAGEMENT_ACCOUNT (id,component,component_id,host,username,password,status ) VALUES (esx,'ESXi',NULL,'hostname',block.username,block.password,block.status);
+--		INSERT INTO MANAGEMENT_ACCOUNT (id,component,component_id,host,username,password,status ) VALUES (esx,block.isESX,NULL,'hostname',block.username,block.password,block.status);
+		INSERT INTO MANAGEMENT_ACCOUNT (id,component,component_id,host,username,password,status ) VALUES (esx,block.isESX,NULL,block.hostPrefix||esx||block.hostSufix,block.username,block.password,block.status);
 
 	END LOOP;
 
@@ -30,11 +34,17 @@ $function$;
 
 
 
--- execute the function
+-- Call the function
 
 select public.changeme();
 
 
 
 truncate MANAGEMENT_ACCOUNT;
+
+
+-- TODO
+
+-- use the sequence for the ID
+-- add the PSC
 
