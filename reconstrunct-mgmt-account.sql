@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION public.changeme()
+CREATE OR REPLACE FUNCTION public.rebuild_mgmt_account()
  RETURNS void
  LANGUAGE plpgsql
 AS $function$
@@ -51,7 +51,7 @@ $function$
 
 -- Call the function
 
-select public.changeme();
+select public.rebuild_mgmt_account();
 
 
 
