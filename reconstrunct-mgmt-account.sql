@@ -19,10 +19,7 @@ BEGIN
 
 	FOR esx  IN 1 .. block.total_esx LOOP
 
-
-
---		INSERT INTO MANAGEMENT_ACCOUNT (id,component,component_id,host,username,password,status ) VALUES (esx,block.isESX,NULL,'hostname',block.username,block.password,block.status);
-		INSERT INTO MANAGEMENT_ACCOUNT (id,component,component_id,host,username,password,status ) VALUES (esx,block.isESX,NULL,block.hostPrefix||esx||block.hostSufix,block.username,block.password,block.status);
+		INSERT INTO MANAGEMENT_ACCOUNT (id,component,component_id,host,username,password,status ) VALUES (nextval('public.management_account_id_seq'),block.isESX,NULL,block.hostPrefix||esx||block.hostSufix,block.username,block.password,block.status);
 
 	END LOOP;
 
@@ -30,7 +27,9 @@ BEGIN
 
 END;
 
-$function$;
+$function$
+
+
 
 
 
@@ -44,7 +43,4 @@ truncate MANAGEMENT_ACCOUNT;
 
 
 -- TODO
-
--- use the sequence for the ID
--- add the PSC
 
