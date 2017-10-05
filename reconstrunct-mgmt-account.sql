@@ -23,6 +23,9 @@ DECLARE
 
 BEGIN
 
+
+--Adds ESXi entries
+
 	FOR esx  IN 1 .. block.total_esx LOOP
 
 		INSERT INTO MANAGEMENT_ACCOUNT (id,component,component_id,host,username,password,status ) VALUES (nextval('public.management_account_id_seq'),block.isESX,NULL,block.hostPrefix||esx||block.hostSufix,block.username,block.password,block.status);
