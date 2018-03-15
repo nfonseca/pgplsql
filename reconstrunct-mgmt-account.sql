@@ -11,16 +11,17 @@ DECLARE
 	username varchar  := 'management';
 	password varchar := 'ac11b0c9bd5e82ff7eba633845eaf9865fdf1b7b9cafd013';
 	status varchar :='OK';
-	isESX  varchar :='ESXi';
 	hostPrefix  varchar :='cia-esx';
 	hostSufix varchar :='.vsphere.local';
-	isPSC varchar :='PSC';
 	PSChost varchar :='192.168.32.1';
 	PSCuser  varchar :='management@localos';
-	isESRS varchar :='ESRS';
 	ESRShost varchar :='192.168.32.16';
 	ESRSuser varchar :='management@localos';
-
+	-- DO NOT CHANGE THESE ONES
+	isESRS varchar :='ESRS';
+	isPSC varchar :='PSC';
+	isESX  varchar :='ESXi';
+	
 BEGIN
 
 
